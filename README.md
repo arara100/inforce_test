@@ -23,8 +23,8 @@
 ### 1. Клонування репозиторію
 
 ```
-git clone https://github.com/your-username/lunch-vote-backend.git
-cd lunch-vote-backend
+git clone https://github.com/your-username/infoce_tets.git
+cd infoce_test
 ```
 
 ### 2. Налаштування віртуального середовища
