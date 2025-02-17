@@ -18,6 +18,26 @@
 - **PostgreSQL** для зберігання даних
 - **JWT** для аутентифікації
 
+## Запуск Docker
+
+### Зібрати образи
+```
+docker-compose build
+```
+### Запустити контейнери
+```
+docker-compose up -d
+```
+### Виконати міграції всередині контейнера
+```
+docker-compose exec web python manage.py migrate
+```
+
+### Створити суперкористувача
+```
+docker-compose exec web python manage.py createsuperuser
+```
+
 ## Запуск проєкту
 
 ### 1. Клонування репозиторію
@@ -40,35 +60,13 @@ source venv/bin/activate  # на Windows використовуйте venv\Scrip
 pip install -r requirements.txt
 ```
 
-### 4. Налаштування бази даних
-```
-CREATE DATABASE your_db;
-```
 
-```
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'lunch_vote',
-        'USER': 'your-username',
-        'PASSWORD': 'your-password',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-```
-
-### 5. Міграції бази даних
+### 4. Міграції бази даних
 ```
 python manage.py migrate
 ```
 
-### 6. Створення суперкористувача
-```
-python manage.py createsuperuser
-```
-
-### 7. Запуск серверу
+### 5. Запуск серверу
 ```
 python manage.py runserver
 ```
