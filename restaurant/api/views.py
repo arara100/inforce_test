@@ -9,10 +9,12 @@ from api.services.menu_service import bulk_upload_menus
 from api.services.vote_service import create_vote, get_vote_results
 from api.services.restaurant_service import create_restaurant
 
+
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
     permission_classes = [permissions.AllowAny]
+
 
 class RestaurantViewSet(viewsets.ModelViewSet):
     queryset = Restaurant.objects.all()
@@ -24,6 +26,7 @@ class RestaurantViewSet(viewsets.ModelViewSet):
         name = request.data.get("name")
         restaurant = create_restaurant(name)
         return Response(RestaurantSerializer(restaurant).data)
+
 
 class MenuViewSet(viewsets.ModelViewSet):
     queryset = Menu.objects.all()
@@ -48,6 +51,7 @@ class MenuViewSet(viewsets.ModelViewSet):
             except ValueError as e:
                 return Response({"error": str(e)}, status=400)
         return Response(serializer.errors, status=400)
+
 
 class VoteViewSet(viewsets.ModelViewSet):
     queryset = Vote.objects.all()
